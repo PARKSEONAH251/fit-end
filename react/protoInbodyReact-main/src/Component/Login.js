@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import config from "../config";
+import '../Style/login.css';
+
 export default function Login() {
   const [userid, setUserId] = useState("");
   const [password, setPassword] = useState("");
@@ -45,31 +47,44 @@ export default function Login() {
     }
   };
 
+  const handleSignUpClick = () => {
+    navigate('/register');
+  };
+
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>User ID:</label>
-          <input
-            type="text"
-            value={userid}
-            onChange={(e) => setUserId(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-        <button onClick={navigateToRegister}>회원 가입</button>
-      </form>
+      <div className="Main_Container">
+        <h2 className="Main_Title"></h2>
+        <img src="/image/MAIN_BACKIMAGE.png" alt="Background" className="MainImage" />
+        <img src="/image/Vector9.png" alt="" className="MainImage_Vector" />
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label className="USERLOGINID_EMAIL">EMAIL</label>
+            <input
+              className="INPUTTEXT1"
+              type="text"
+              value={userid}
+              onChange={(e) => setUserId(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label className="USERLOGIN_PASSWORD">PASSWORD</label>
+            <input
+              className="INPUTTEXT2"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button className="LOGIN_BUTTON" type="submit">LOGIN</button>
+          <label className="SIGNUP_BUTTON">
+            Don't have an account?
+            <button className="BUTTON" onClick={handleSignUpClick}>Sign_up</button>
+          </label>
+        </form>
+      </div>
     </div>
   );
 }
